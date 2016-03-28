@@ -6,8 +6,10 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
+//se app\models\LoginForm;
 use app\models\ContactForm;
+use \app\models\Characters;
+use app\models\Castle;
 
 class SiteController extends Controller
 {
@@ -95,5 +97,53 @@ class SiteController extends Controller
     public function actionFiles()
     {
         return $this->render('files');
+    }
+    
+    public function actionToppk()
+    {
+        $html = '';
+        $characters = Characters::find()->select(['char_name','pkkills'])->where('pkkills > 0')->orderBy('pkkills DESC')->limit(10)->all();
+        if (count($characters) > 0) {
+            foreach ($characters as $character) {
+                $html .= '<li class="list-group-item">';
+                $html .= '<span class="badge">'. $character['pkkills'] .'</span>';
+                $html .= $character['char_name'];
+                $html .= '</li>';
+            }
+        }
+        Yii::$app->response->format = \yii\web\Response::FORMAT_HTML;
+        return $html;
+    }
+    
+    public function actionToppvp()
+    {
+        $html = '';
+        $characters = Characters::find()->select(['char_name','pvpkills'])->where('pvpkills > 0')->orderBy('pvpkills DESC')->limit(10)->all();
+        if (count($characters) > 0) {
+            foreach ($characters as $character) {
+                $html .= '<li class="list-group-item">';
+                $html .= '<span class="badge">'. $character['pvpkills'] .'</span>';
+                $html .= $character['char_name'];
+                $html .= '</li>';
+            }
+        }
+        Yii::$app->response->format = \yii\web\Response::FORMAT_HTML;
+        return $html;
+    }
+    
+    public function actionCastle()
+    {
+        $html = '';
+        $castles = Castle::find()->select(['name'])->orderBy('name')->all();
+        if (count($castles) > 0) {
+            foreach ($castles as $castle) {
+                $html .= '<li class="list-group-item">';
+                $html .= '<span class="badge">'. 'NPC' .'</span>';
+                $html .= $castle['name'];
+                $html .= '</li>';
+            }
+        }
+        Yii::$app->response->format = \yii\web\Response::FORMAT_HTML;
+        return $html;
     }
 }

@@ -51,11 +51,11 @@ $config = [
             'showScriptName' => false,
             'enableStrictParsing' => false,
             'rules' => [
-                '/' => 'site/index',
-                '/site/login' => 'site/login',
-                '/site/contact' => 'site/contact',
-                '/site/captcha' => 'site/captcha',
-                '/sitemap.xml' => 'site/xmlsitemap'
+//                '/' => 'site/index',
+//                '/site/login' => 'site/login',
+//                '/site/contact' => 'site/contact',
+//                '/site/captcha' => 'site/captcha',
+//                '/sitemap.xml' => 'site/xmlsitemap'
             ],
         ],
     ],

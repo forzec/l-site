@@ -36,7 +36,7 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Главная', 'url' => ['/site/index']],
+            ['label' => 'Главная', 'url' => ['/']],
             ['label' => 'Форум', 'url' => ['http://forum.line2age.pro']],
             ['label' => 'Файлы', 'url' => ['/site/files']],
             ['label' => 'О сервере', 'url' => ['/site/about']],

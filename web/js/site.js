@@ -1,0 +1,11 @@
+$(document).ready(function(){
+    $('#top_pk').load(
+        '/site/toppk'
+    );
+    $('#top_pvp').load(
+        '/site/toppvp'
+    );
+    $('#castle').load(
+        '/site/castle'
+    );
+});
