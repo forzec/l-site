@@ -134,11 +134,20 @@ class SiteController extends Controller
     public function actionCastle()
     {
         $html = '';
-        $castles = Castle::find()->select(['name'])->orderBy('name')->all();
+        //$castles = Castle::find()->select(['name'])->orderBy('name')->all();
+        $connection = Yii::$app->getDb();
+        $command = $connection->createCommand('
+            SELECT c.name as name, cls.name as clan
+            FROM castle as c
+            LEFT JOIN clan_data as cld ON c.id = cld.hasCastle
+            LEFT JOIN clan_subpledges as cls ON cld.clan_id = cls.clan_id 
+            ORDER BY c.name
+        ');
+        $castles = $command->queryAll();
         if (count($castles) > 0) {
             foreach ($castles as $castle) {
                 $html .= '<li class="list-group-item">';
-                $html .= '<span class="badge">'. 'NPC' .'</span>';
+                $html .= '<span class="badge">'. $castle['clan'] .'</span>';
                 $html .= $castle['name'];
                 $html .= '</li>';
             }
