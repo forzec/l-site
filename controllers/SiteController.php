@@ -53,6 +53,11 @@ class SiteController extends Controller
     {
         return $this->render('index');
     }
+    
+    public function actionForum()
+    {
+        return $this->render('forum');
+    }
 
 //    public function actionLogin()
 //    {
@@ -81,7 +86,6 @@ class SiteController extends Controller
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
-
             return $this->refresh();
         }
         return $this->render('contact', [
@@ -149,6 +153,21 @@ class SiteController extends Controller
                 $html .= '<li class="list-group-item">';
                 $html .= '<span class="badge">'. $castle['clan'] .'</span>';
                 $html .= $castle['name'];
+                $html .= '</li>';
+            }
+        }
+        Yii::$app->response->format = \yii\web\Response::FORMAT_HTML;
+        return $html;
+    }
+    
+    public function actionOnline()
+    {
+        $html = '';
+        $characters = Characters::find()->select('char_name')->where('online > 0')->orderBy('account_name')->all();
+        if (count($characters) > 0) {
+            foreach ($characters as $character) {
+                $html .= '<li class="list-group-item">';
+                $html .= $character['char_name'];
                 $html .= '</li>';
             }
         }

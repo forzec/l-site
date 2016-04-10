@@ -37,7 +37,7 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Главная', 'url' => ['/']],
-            ['label' => 'Форум', 'url' => ['http://forum.line2age.pro']],
+            ['label' => 'Форум', 'url' => ['/site/forum']],
             ['label' => 'Файлы', 'url' => ['/site/files']],
             ['label' => 'О сервере', 'url' => ['/site/about']],
             ['label' => 'Контакты', 'url' => ['/site/contact']],
