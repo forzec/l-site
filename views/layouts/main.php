@@ -33,11 +33,14 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
+    ?>
+    <p class="navbar-text navbar-left"><span class="badge" id="player-online" >...</span> игроков online.</p>
+    <?php
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Главная', 'url' => ['/']],
-            ['label' => 'Форум', 'url' => ['/site/forum']],
+            ['label' => 'Форум', 'url' => 'https://forum.line2age.pro/', 'linkOptions' => ['target' => '_blank'] ],
             ['label' => 'Файлы', 'url' => ['/site/files']],
             ['label' => 'О сервере', 'url' => ['/site/about']],
             ['label' => 'Контакты', 'url' => ['/site/contact']],

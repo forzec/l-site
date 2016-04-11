@@ -8,4 +8,7 @@ $(document).ready(function(){
     $('#castle').load(
         '/site/castle'
     );
+    $('#player-online').load(
+        '/site/count'
+    );
 });

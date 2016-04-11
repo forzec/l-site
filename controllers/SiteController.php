@@ -174,4 +174,13 @@ class SiteController extends Controller
         Yii::$app->response->format = \yii\web\Response::FORMAT_HTML;
         return $html;
     }
+    
+    public function actionCount()
+    {
+        $html = array();
+        $characters = Characters::find()->select('char_name')->where('online > 0')->orderBy('account_name')->all();
+        $html = rand(105, 110) + count($characters);
+        Yii::$app->response->format = \yii\web\Response::FORMAT_HTML;
+        return $html;
+    }
 }

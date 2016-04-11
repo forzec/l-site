@@ -8,7 +8,7 @@ $this->title = 'My Yii Application';
 
     <div class="jumbotron">
         <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"></iframe>
+            <iframe class="embed-responsive-item" src="https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"></iframe>
         </div>
     </div>
 
